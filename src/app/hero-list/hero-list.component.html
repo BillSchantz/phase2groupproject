@@ -1,0 +1,44 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}} {{234+43}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>
+                Filter By:
+            </div>
+            <div class='col-md-4'>
+                <input type='text' [(ngModel)] = 'listFilter'>
+                {{attrListFilter}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = 'table-responsive'>
+    <table class ='table'>
+        <thead>
+            <tr>
+                <th>
+                    <button class='btn btn-primary' (click)='toggleImage()'>
+                        {{showImage? 'Hide': 'Show'}}
+                    </button>
+                </th>
+                <th>{{'SuperHero' | uppercase}}</th>
+                <th>Ability</th>
+                <th>Org</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor ='let temp of filteredSuperHeroes'>
+                <td>
+                    <img *ngIf='showImage' [src] = 'temp.image' width = '100' margin = '2'/>
+                </td>
+                <td><a [routerLink]="['/profile', temp.name]">{{temp.name}}</a></td>
+                <td>{{temp.ability}}</td>
+                <td>{{temp.organization | uppercase}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
